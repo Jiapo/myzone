@@ -17,6 +17,15 @@ html,body{
     height: 100%;
     text-align: center;
 }
+#floater{
+    height: 50%;
+    margin-bottom: -4em;
+}
 #navigation{
+    width: 16em;
+    height: 8em;
+    background: rgba(0,0,0,0.3);
     font-size: 1em;
+    margin: 0 auto;
+    border-radius: 0.6em;
 }
