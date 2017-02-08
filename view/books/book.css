@@ -20,4 +20,14 @@ html,body{
     border: solid 3px #e0dfcc;
     border-radius: 0.5em;
     margin: 0.5em;
+	position:relative;
+}
+.title{
+	padding:1em;
+	border-bottom: solid 1px #999;
+}
+.reaction{
+	padding:1em;
+	position:absolute;
+	text-align:left;
 }
