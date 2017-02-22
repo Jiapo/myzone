@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<style>
+    #myCanvas{
+        border: none;
+    }
+</style>
+<body>
+
+<canvas id="myCanvas" width="500" height="500" style="border:1px solid #d3d3d3;">
+    Your browser does not support the HTML5 canvas tag.
+</canvas>
+
+<script>
+
+
+    var c=document.getElementById("myCanvas");
+    var ctx=c.getContext("2d");
+    var c1=1;
+    ctx.beginPath();
+    start();
+    function start(){
+        switch (c1){
+            case 1:drawCircle(ctx,250,250,250);
+                break;
+            case 2:drawCircle(ctx,250,250,200);
+                break;
+            case 3:drawCircle(ctx,250,250,150);
+                break;
+            case 4:drawCircle(ctx,250,250,150);
+                break;
+        }
+
+    }
+    function drawCircle(ctx,cx,cy,cr){
+        var x=cx-cr,y=cr;
+        //初始化一次，进入计时器
+        ctx.lineTo(x,y);
+        ctx.strokeStyle="green";
+        ctx.stroke();
+        x++;
+        y=cr-Math.sqrt(cr*cr-(x-cx)*(x-cy));
+        //计时开始
+        var t=setInterval(function(){
+            //上半圆
+            if(y<cr){
+                ctx.lineTo(x,y);
+                ctx.strokeStyle="green";
+                ctx.stroke();
+                x++;
+                y=cr-Math.sqrt(cr*cr-(x-cx)*(x-cy));
+                console.log(x,y);
+            }
+            //下半圆
+            if(y>=cr){
+                ctx.lineTo(x,y);
+                ctx.strokeStyle="green";
+                ctx.stroke();
+                x--;
+                y=Math.sqrt(cr*cr-(x-cx)*(x-cy))+cr;
+                console.log(x,y);
+                if(x==0){
+                    ctx.lineTo(0,cy);
+                    ctx.strokeStyle="green";
+                    ctx.stroke();
+                    clearInterval(t);
+                    c1++;
+                    start();
+                }
+            }
+        },10)
+    }
+
+</script>
+
+</body>
+</html>
