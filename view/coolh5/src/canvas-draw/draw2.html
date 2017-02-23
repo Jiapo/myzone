@@ -16,58 +16,65 @@
 
     var c=document.getElementById("myCanvas");
     var ctx=c.getContext("2d");
-    var c1=1;
+    var c1=1;                //第一个圆
+    var cr=10
     ctx.beginPath();
-    start();
-    function start(){
-        switch (c1){
-            case 1:drawCircle(ctx,250,250,250);
-                break;
-            case 2:drawCircle(ctx,250,250,200);
-                break;
-            case 3:drawCircle(ctx,250,250,150);
-                break;
-            case 4:drawCircle(ctx,250,250,150);
-                break;
-        }
+    drawCircle(ctx,250,250,cr);
+//    function start(){
+//        switch (c1){
+//            case 1:drawCircle(ctx,250,250,250);
+//                break;
+//            case 2:drawCircle(ctx,250,250,200);
+//                break;
+//            case 3:drawCircle(ctx,250,250,150);
+//                break;
+//            case 4:drawCircle(ctx,250,250,100);
+//                break;
+//        }
+//        for(var i=1;i<11;i++){
+//            let j=i;
+//            drawCircle(ctx,250,250,10*j);
+//        }
+//        drawCircle(ctx,250,250,250);
 
-    }
-    function drawCircle(ctx,cx,cy,cr){
-        var x=cx-cr,y=cr;
-        //初始化一次，进入计时器
-        ctx.lineTo(x,y);
+//    }
+    function drawCircle(ctx,cx,cy,cr){    //画布，圆心坐标x、y，半径
+        var x=cx-cr,y=cy;                  //起点，经过圆心平行于x轴的直径左端点
+
+        ctx.moveTo(x,y);                    //初始化一次，进入计时器
         ctx.strokeStyle="green";
         ctx.stroke();
         x++;
-        y=cr-Math.sqrt(cr*cr-(x-cx)*(x-cy));
-        //计时开始
-        var t=setInterval(function(){
-            //上半圆
-            if(y<cr){
+        y=cy-Math.sqrt(cr*cr-(x-cx)*(x-cx));
+
+        var t=setInterval(function(){        //计时开始
+
+            if(y<cy){                        //上半圆
                 ctx.lineTo(x,y);
                 ctx.strokeStyle="green";
                 ctx.stroke();
                 x++;
-                y=cr-Math.sqrt(cr*cr-(x-cx)*(x-cy));
+                y=cy-Math.sqrt(cr*cr-(x-cx)*(x-cx));
                 console.log(x,y);
             }
-            //下半圆
-            if(y>=cr){
+
+            if(y>=cy){                        //下半圆
                 ctx.lineTo(x,y);
                 ctx.strokeStyle="green";
                 ctx.stroke();
                 x--;
-                y=Math.sqrt(cr*cr-(x-cx)*(x-cy))+cr;
+                y=Math.sqrt(cr*cr-(x-cx)*(x-cx))+cy;
                 console.log(x,y);
-                if(x==0){
-                    ctx.lineTo(0,cy);
+                if(x==cx-cr){
+                    ctx.lineTo(cx-cr,cy);
                     ctx.strokeStyle="green";
                     ctx.stroke();
                     clearInterval(t);
-                    c1++;
-                    start();
+                    cr=10*c1+cr;
+                    drawCircle(ctx,250,250,cr);
                 }
             }
+
         },10)
     }
 
