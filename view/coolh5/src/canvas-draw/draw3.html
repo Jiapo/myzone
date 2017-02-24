@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<style>
+    #myCanvas{
+        border: none;
+    }
+</style>
+<body>
+
+<canvas id="myCanvas" width="1366" height="728%" style="border:1px solid #d3d3d3;">
+    Your browser does not support the HTML5 canvas tag.
+</canvas>
+
+<script>
+
+    var c=document.getElementById("myCanvas"),
+            w=document.body.scrollWidth,
+            h=document.body.scrollHeight;
+    c.style.width=w;
+    c.style.height=h;
+
+    var ctx=c.getContext("2d");
+    var c1=1;                //第一个圆
+    var cr=1
+    ctx.beginPath();
+    drawCircle(ctx,w/2,h/2,cr);
+
+    function drawCircle(ctx,cx,cy,cr){    //画布，圆心坐标x、y，半径
+
+        var t=setInterval(function(){        //计时开始
+            ctx.moveTo(cx+cr,cy);
+            ctx.arc(cx,cy,cr,0,Math.PI*2,true);
+            ctx.strokeStyle="green";
+            ctx.stroke();
+            if(cr<h/2-30){
+                clearInterval(t);
+                cr=cr+4;
+                c1++;
+                drawCircle(ctx,w/2,h/2,cr);
+            }
+            else{
+                console.log(c1);
+                clearInterval(t);
+            }
+        },1)
+    }
+
+</script>
+
+</body>
+</html>
