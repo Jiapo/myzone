@@ -7,15 +7,15 @@
 </style>
 <body>
 
-<canvas id="myCanvas" width="1366" height="728%" style="border:1px solid #d3d3d3;">
+<canvas id="myCanvas" width="1366" height="728" style="border:1px solid #d3d3d3;">
     Your browser does not support the HTML5 canvas tag.
 </canvas>
 
 <script>
 
     var c=document.getElementById("myCanvas"),
-            w=document.body.scrollWidth,
-            h=document.body.scrollHeight;
+            w=document.body.clientWidth,
+            h=document.body.clientHeight;
     c.style.width=w;
     c.style.height=h;
 
