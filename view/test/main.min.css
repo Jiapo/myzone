@@ -1,0 +1,83 @@
+
+html, body {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0
+}
+
+body {
+    background-color: #22C3AA;
+    color: #fff;
+    position: relative;
+    font-family: Lato
+}
+
+#owl-body {
+    stroke-dasharray: 6515;
+    animation: owl-body-stroke  1s ease-in-out 4s;
+    animation-fill-mode: both
+}
+
+#owl-left-eye {
+    stroke-dasharray: 2212;
+    animation: owl-left-eye-stroke 1s ease-in-out;
+}
+
+#owl-right-eye {
+    stroke-dasharray: 1609;
+    animation: owl-right-eye-stroke 1s ease-in-out 3s;
+    animation-fill-mode: both
+}
+
+
+@keyframes owl-body-stroke {
+    0% {
+        stroke-dashoffset: 6515;
+        visibility: hidden
+    }
+    100% {
+        stroke-dashoffset: 0;
+        visibility: visible
+    }
+}
+
+@keyframes owl-left-eye-stroke {
+    0% {
+        stroke-dashoffset: 2212;
+        visibility: hidden
+    }
+    100% {
+        stroke-dashoffset: 0;
+        visibility: visible
+    }
+}
+
+@keyframes owl-right-eye-stroke {
+    0% {
+        stroke-dashoffset: 1609;
+        visibility: hidden
+    }
+    100% {
+        stroke-dashoffset: 0;
+        visibility: visible
+    }
+}
+
+#owl-svg {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -75px;
+    margin-left: -75px
+}
+
+#owl-svg * {
+    fill: #22C3AA;
+    stroke: #fff;
+    stroke-width: 32;
+    stroke-linecap: round;
+    stroke-linejoin: round
+}
